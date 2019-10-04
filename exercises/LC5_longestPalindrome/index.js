@@ -3,37 +3,31 @@
 // longestPalindrome("cbbd") --> "bb"
 // longestPalindrome("abba") --> "abba"
 // longestPalindrome("a") --> "a"
-const palindrome = (s, i, j) => {
-  const sub = s.slice(i, j + 1);
-  let pal = true;
-  if (i === j) {
-    return sub[0];
-  }
-  for (let k = 0; k < sub.length / 2; k++) {
-    if (sub[k] !== sub[sub.length - 1 - k]) {
-      pal = false;
-    }
-  }
-
-  if (pal) {
-    return sub;
-  } else {
-    return "";
-  }
-};
 
 function longestPalindrome(s) {
-  let maxPal = "";
-  for (let i = 0; i < s.length; i++) {
-    for (let j = i; j < s.length; j++) {
-      const p = palindrome(s, i, j);
-      if (p.length > maxPal.length) {
-        maxPal = p;
+  let startIndex = 0;
+  let maxLength = 1;
+
+  // Input any part of a string, identify longest palindrome
+  getLongestPalindrome = (left, right) => {
+    while (left >= 0 && right <= s.length && s[left] === s[right]) {
+      const currentLength = right - left + 1;
+
+      if (currentLength > maxLength) {
+        startIndex = left;
+        maxLength = currentLength;
       }
+      left -= 1;
+      right += 1;
     }
+  };
+
+  for (let i = 0; i < s.length; i++) {
+    getLongestPalindrome(i, i + 1);
+    getLongestPalindrome(i - 1, i + 1);
   }
 
-  return maxPal;
+  return s.slice(startIndex, startIndex + maxLength);
 }
 
 module.exports = longestPalindrome;

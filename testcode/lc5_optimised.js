@@ -1,41 +1,28 @@
 // Palindrome function
-// If string is palindrom, return it. Else return "".
-const palindrome = (s, i, j) => {
-  const sub = s.slice(i, j + 1);
-  let pal = true;
-  if (i === j) {
-    return "";
-  }
-  for (let k = 0; k < sub.length / 2; k++) {
-    // console.log("... " + sub[k] + " : " + sub[j - k]);
-
-    if (sub[k] !== sub[sub.length - 1 - k]) {
-      pal = false;
-    }
-  }
-  //   console.log("i=" + sub + "   result:" + pal);
-
-  if (pal) {
-    // console.log("pal found:" + sub);
-    return sub;
-  } else {
-    return "";
-  }
-};
-
+// If string is palindrom, return i
 const longestPalindrome = s => {
-  let subStart = 0;
-  let subEnd = 0;
-  let maxPal = "";
-  for (let i = 0; i < s.length; i++) {
-    for (let j = i; j < s.length; j++) {
-      const p = palindrome(s, i, j);
-      if (p.length > maxPal.length) {
-        maxPal = p;
+  let startIndex = 0;
+  let maxLength = 0;
+
+  // Input any part of a string, identify longest palindrome
+  getLongestPalindrome = (left, right) => {
+    while (left >= 0 && right <= s.length && s[left] === s[right]) {
+      const currentLength = right - left + 1;
+
+      if (currentLength > maxLength) {
+        startIndex = left;
+        maxLength = currentLength;
       }
+      left -= 1;
+      right += 1;
     }
+  };
+
+  for (let i = 0; i < s.length; i++) {
+    getLongestPalindrome(i, i + 1);
+    getLongestPalindrome(i - 1, i + 1);
   }
 
-  console.log(maxPal);
+  console.log(s.slice(startIndex, startIndex + maxLength));
 };
 longestPalindrome("bananarama");
