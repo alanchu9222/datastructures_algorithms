@@ -1,28 +1,31 @@
-//Given a string s, find the longest palindromic substring in s
-// --- Example
-// longestPalindrome("cbbd") --> "bb"
-// longestPalindrome("abba") --> "abba"
-// longestPalindrome("a") --> "a"
+// Palindrome function
+// If string is palindrom, return it. Else return "".
 const palindrome = (s, i, j) => {
   const sub = s.slice(i, j + 1);
   let pal = true;
   if (i === j) {
-    return sub[0];
+    return "";
   }
   for (let k = 0; k < sub.length / 2; k++) {
+    // console.log("... " + sub[k] + " : " + sub[j - k]);
+
     if (sub[k] !== sub[sub.length - 1 - k]) {
       pal = false;
     }
   }
+  //   console.log("i=" + sub + "   result:" + pal);
 
   if (pal) {
+    // console.log("pal found:" + sub);
     return sub;
   } else {
     return "";
   }
 };
 
-function longestPalindrome(s) {
+const longestPalindrome = s => {
+  let subStart = 0;
+  let subEnd = 0;
   let maxPal = "";
   for (let i = 0; i < s.length; i++) {
     for (let j = i; j < s.length; j++) {
@@ -33,7 +36,6 @@ function longestPalindrome(s) {
     }
   }
 
-  return maxPal;
-}
-
-module.exports = longestPalindrome;
+  console.log(maxPal);
+};
+longestPalindrome("bananarama");
