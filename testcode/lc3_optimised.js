@@ -1,10 +1,4 @@
-// Given a string, return the length of the longest substring without
-// repeating characters.
-// --- Example
-// lengthOfLongestSubstring("abcabcbb") --> 3 since length of "abc"
-// lengthOfLongestSubstring("bbbbb") --> 1 since length of "b"
-
-function lengthOfLongestSubstring(s) {
+longestSubstring = s => {
   let maxLength = 0;
   let subLength = 0;
   let subStart = 0;
@@ -23,9 +17,13 @@ function lengthOfLongestSubstring(s) {
     if (subLength > maxLength) {
       maxLength = subLength;
     }
+    console.log(
+      "iteration " + i + " => " + subStart + ":" + subEnd + ":" + subLength
+    );
+    console.log(sub);
   }
-
-  return maxLength;
-}
-
-module.exports = lengthOfLongestSubstring;
+  console.log(maxLength);
+};
+// longestSubstring("supercaliforniaaccellerator");
+//longestSubstring("pwwkew");
+longestSubstring("bbbbb");
