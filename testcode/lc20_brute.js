@@ -1,4 +1,7 @@
-const isValid = s => {
+// Palindrome function
+// If string is palindrom, return it. Else return "".
+
+const validParentheses = s => {
   const bracesHashMap = { "(": ")", "{": "}", "[": "]" };
   let stack = [];
   for (let i = 0; i < s.length; i++) {
@@ -11,5 +14,4 @@ const isValid = s => {
   }
   return stack.length === 0;
 };
-
-module.exports = isValid;
+console.log(validParentheses("()()(()))"));
