@@ -1,7 +1,5 @@
-function isPalindrome(s) {
-  const sanitized = s.toLowerCase().replace(/[^\w]|[_]/g, "");
-  //  const sanitized = s.toLowerCase().replace(/[\W_]/g, "");
-
+validPalindrome = s => {
+  const sanitized = s.toLowerCase().replace(/[^(\w_)]/g, "");
   let start = 0;
   let end = sanitized.length - 1;
   while (end > start) {
@@ -12,6 +10,6 @@ function isPalindrome(s) {
     start++;
   }
   return true;
-}
+};
 
-module.exports = isPalindrome;
+console.log(validPalindrome("A man, a plan, a canal: Panama"));
