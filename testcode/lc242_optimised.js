@@ -10,8 +10,6 @@ const isAnagram = (a, b) => {
     .sort()
     .join();
 
-  console.log(aa);
-  console.log(bb);
   return aa === bb;
 };
 console.log(isAnagram("abcdef", "cbafed"));
