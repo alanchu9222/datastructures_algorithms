@@ -1,4 +1,21 @@
-function rob(houses) {
+/*
+The rule is : Cannot rob two adjacent houses
+Define an array for the maximum loot for a given "house"
+
+Input = 2,1,1,2 (max loot = 4)
+
+House 
+number Max Loot
+1      2
+2      2,2
+3      2,2,2
+4      2,2,2,4
+
+Max loot is ml[i]+ml[i-2] or ml[i-1] whichever is greater
+
+*/
+
+rob = houses => {
   if (houses.length == 0) {
     return 0;
   }
@@ -17,6 +34,6 @@ function rob(houses) {
     ml.push(maxLoot);
   }
   return ml[houses.length - 1];
-}
+};
 
-module.exports = rob;
+console.log(rob([2, 1, 1, 2]));
