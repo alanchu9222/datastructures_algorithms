@@ -1,3 +1,11 @@
+/*
+Case 1: [1]
+Case 2: [1,2,3,4,5]
+Case 3: [3,4,5,1,2]
+Case 4: [4,5,1,2,3]
+Case 5: [5,1,2,3,4]
+ */
+
 function findMin(nums) {
   if (nums.length === 1) {
     // Case 0
@@ -31,6 +39,7 @@ function findMin(nums) {
       oldMid = mid;
     }
   }
-}
 
-module.exports = findMin;
+  return 0;
+}
+console.log(findMin([4, 5, 6, 7, 0, 1, 2]));
