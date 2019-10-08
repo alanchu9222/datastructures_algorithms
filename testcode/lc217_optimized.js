@@ -6,9 +6,18 @@ Ratchet technique: two pointers, ratchet down the pointers and calculate the thr
 */
 
 containsDuplicate = numbers => {
-  const numSet = new Array(...new Set(numbers));
-  console.log(numSet);
-  return numSet.length == numbers.length;
+  // const numSet = new Array(...new Set(numbers));
+  // console.log(numSet);
+  // return numSet.length == numbers.length;
+  let hashMap = {};
+  for (let i = 0; i < numbers.length; i++) {
+    if (hashMap[numbers[i]]) {
+      return true;
+    } else {
+      hashMap[numbers[i]] = true;
+    }
+  }
+  return false;
 };
 
 console.log(containsDuplicate([1, 2, 3, 1]));
