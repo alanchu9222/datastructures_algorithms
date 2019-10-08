@@ -1,4 +1,12 @@
-function maxArea(nums) {
+/*
+Given a set of numbers: find the pair of numbers that give the maximum area
+
+Ratchet technique: two pointers, ratchet down the pointers and calculate the volume
+- Choose the larger number every time - as we want the larget volume.
+
+*/
+
+container = nums => {
   let firstIndex = 0;
   let lastIndex = nums.length - 1;
   let maxSize = 0;
@@ -13,6 +21,6 @@ function maxArea(nums) {
     }
   }
   return Math.max(maxSize);
-}
+};
 
-module.exports = maxArea;
+console.log(container([1, 8, 6, 2, 5, 4, 8, 3, 7]));
