@@ -1,15 +1,11 @@
-// Given an array of integers, return an array of indices of the two numbers
-// that add up to the target.
-// You may assume that each input would have exactly one solution, and
-// you may not use the same element twice.
-// --- Examples
-// twoSum([2,7,11,15], 9) --> [0,1]
-// twoSum([3,2,4], 9) --> [1,2]
-//
-// Use a hashmap to store the index and iterate only one pass.
-// O(n) time complexity
+/*
+Get the two indexes that will sum to a given result
 
-function twoSum(nums, target) {
+Use a hashmap for each element visited
+When iterating the array use the hashmap to check if target is found.
+*/
+
+twoSum = (nums, target) => {
   console.log("INPUT:" + nums);
 
   let visited = {};
@@ -31,6 +27,6 @@ function twoSum(nums, target) {
     }
   }
   return [];
-}
+};
 
-module.exports = twoSum;
+console.log(twoSum([2, 7, 11, 15], 9));

@@ -13,6 +13,7 @@ function coinChange(coins, amt) {
     }
   }
   console.log(minCoinsArray);
+
   return minCoinsArray[amt] === Infinity ? -1 : minCoinsArray[amt];
 }
 
