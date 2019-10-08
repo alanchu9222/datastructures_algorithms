@@ -1,26 +1,19 @@
 /*
-Given a set of numbers: find the pair of numbers that give the maximum area
+Find the best profit for a set of close prices in the stock market
+[7, 1, 5, 3, 6, 4]
 
-Ratchet technique: two pointers, ratchet down the pointers and calculate the volume
-- Choose the larger number every time - as we want the larget volume.
-
+Each index is a day of trading
 */
 
-container = nums => {
-  let firstIndex = 0;
-  let lastIndex = nums.length - 1;
-  let maxSize = 0;
-  while (lastIndex > firstIndex) {
-    const volume =
-      Math.min(nums[lastIndex], nums[firstIndex]) * (lastIndex - firstIndex);
-    maxSize = Math.max(volume, maxSize);
-    if (nums[lastIndex] > nums[firstIndex]) {
-      firstIndex++;
-    } else {
-      lastIndex;
-    }
+maxProfit = nums => {
+  let min = nums[0];
+  let dpProfit = new Array(nums.length).fill(0);
+  dpProfit[0] = 0;
+  for (let i = 1; i < nums.length; i++) {
+    dpProfit[i] = nums[i] - min;
+    min = Math.min(nums[i], min);
   }
-  return Math.max(maxSize);
+  return Math.max(...dpProfit);
 };
 
-console.log(container([1, 8, 6, 2, 5, 4, 8, 3, 7]));
+console.log(maxProfit([7, 1, 5, 3, 6, 4]));

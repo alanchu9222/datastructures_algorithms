@@ -1,4 +1,16 @@
-function maxProduct(nums) {
+/*
+Maximum Product                  Evaluate at i
+Sub Array          Max Sub       Better than last
+                                 Result?
+
+[2,3,-2,4]        {2}            2  (yes)      2
+[2,3,-2,4]        {2,3}          6  (yes)      2  6
+[2,3,-2,4]        {2,3,-2}      -12 (no)       2  6  6 
+[2,3,-2,4]        {2,3,-2,4}    -12 (no)       2  6  6  6
+
+ */
+
+function maxProductSubArray(nums) {
   let maxProduct = new Array(nums.length).fill(0);
   let minProduct = new Array(nums.length).fill(0);
 
@@ -16,5 +28,4 @@ function maxProduct(nums) {
   console.log(minProduct);
   return Math.max(...maxProduct);
 }
-
-module.exports = maxProduct;
+console.log(maxProductSubArray([-2, 3, -4]));
