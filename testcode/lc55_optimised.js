@@ -20,17 +20,19 @@ loop (i=0 to j) for (j=0 to array.length)
 canJump = numbers => {
   let dpArray = new Array(numbers.length).fill(false);
   dpArray[0] = true;
-  for (let j = 1; j < numbers.length; j++) {
-    for (let i = 0; i < j; i++) {
-      const maxJump = numbers[i];
-      if (dpArray[i] && i + maxJump >= j) {
-        dpArray[j] = true;
-        break;
+  console.log(dpArray);
+  for (let i = 1; i < numbers.length; i++) {
+    for (let j = 0; j < i; j++) {
+      // Set to dpArray[i] to true if we can get there from j
+      console.log(" i = " + i + " j = " + j + " x=" + dpArray[j]);
+      if (dpArray[j] && j + numbers[j] === i) {
+        dpArray[i] = true;
       }
     }
+    console.log("------------------------");
   }
   console.log(dpArray);
-  return dpArray[numbers.length - 1];
+  return true;
 };
 
 console.log(canJump([2, 3, 1, 1, 4]));
